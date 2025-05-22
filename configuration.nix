@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, version, nixpkgs, nixpkgs-unstable, ... }:
 
 {
   imports =
@@ -32,7 +32,8 @@
     defaultLocale = "zh_CN.UTF-8";
     inputMethod = {
       enable = true;
-      type = "fcitx5";
+      type = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
       fcitx5 = {
       	addons = with pkgs; [
           rime-data
@@ -113,25 +114,67 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # default packages
   environment.systemPackages = with pkgs; [
+    git
     vim
     wget
-    git
-    rustup
+    ripgrep
+    lsd
+    fd
+    gcc
+    glibc
+    getent
+    python311
+    fontconfig
+    nix-search-cli
+    nil
   ];
 
+  # Setup default shell
+  users.defaultUserShell = pkgs.nushell;
+  environment.shells = with pkgs; [nushell];
+
+  virtualisation = {
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+  # optimize nix store
+  boot.loader.systemd-boot.configurationLimit = 10;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+  nix.settings.auto-optimise-store = true;
+
+  nix.package = pkgs.nixStable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
-  ''; 
+  '';
+
+  system.stateVersion = version;
+  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+  nix.channel.enable = false;
+  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs-unstable".source = "${nixpkgs-unstable}";
+  nix.settings.nix-path = lib.mkForce ["nixpkgs=/etc/nix/inputs/nixpkgs" "nixpkgs-unstable=/etc/nix/inputs/nixpkgs-unstable"];
+
   nix.settings = {
     substituters = [ 
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      # "https://hyprland.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     trusted-substituters = [
-      # "https://hyprland.cachix.org"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://hyprland.cachix.org"
     ];
     trusted-public-keys = [
       # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6IBMioiJM7ypFP8PwtkuGc="
@@ -155,13 +198,4 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
-
 }

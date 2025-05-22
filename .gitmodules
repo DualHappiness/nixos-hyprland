@@ -1,0 +1,6 @@
+[submodule "home/catppuccin-gitui"]
+	path = home/catppuccin-gitui
+	url = https://github.com/catppuccin/gitui.git
+[submodule "home/nu_scripts"]
+	path = home/nu_scripts
+	url = https://github.com/nushell/nu_scripts
