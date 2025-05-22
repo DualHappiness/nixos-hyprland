@@ -2,13 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, version, nixpkgs, nixpkgs-unstable, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ lib, config, pkgs, pkgs-unstable, version, nixpkgs, nixpkgs-unstable, hyprland
+, ... }: {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -16,12 +14,6 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -35,38 +27,23 @@
       type = "ibus";
       ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
       fcitx5 = {
-      	addons = with pkgs; [
+        addons = with pkgs; [
           rime-data
           fcitx5-gtk
           fcitx5-rime
           fcitx5-chinese-addons
         ];
-        settings.inputMethod = {
-        "Groups/0" = {
-          Name = "Default";
-          "Default Layout" = "us";
-          DefaultIM = "keyboard-us";
-        };
-        "Groups/0/Items/0".Name = "keyboard-us";
-        "Groups/0/Items/1".Name = "pinyin";
-        GroupOrder."0" = "Default"; 
       };
-};
     };
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "cn";
-    variant = "";
+  fonts = {
+    packages = with pkgs; [
+      sarasa-gothic
+      dejavu_fonts
+      maple-mono-NF
+    ];
   };
+
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -95,14 +72,12 @@
     isNormalUser = true;
     description = "dual";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    password = " ";
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "dual";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "dual";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -129,11 +104,14 @@
     fontconfig
     nix-search-cli
     nil
+    nixd
+    pkgs-unstable.v2rayn
+    pkgs-unstable.xray
   ];
 
   # Setup default shell
   users.defaultUserShell = pkgs.nushell;
-  environment.shells = with pkgs; [nushell];
+  environment.shells = with pkgs; [ nushell ];
 
   virtualisation = {
     podman = {
@@ -165,10 +143,13 @@
   nix.channel.enable = false;
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
   environment.etc."nix/inputs/nixpkgs-unstable".source = "${nixpkgs-unstable}";
-  nix.settings.nix-path = lib.mkForce ["nixpkgs=/etc/nix/inputs/nixpkgs" "nixpkgs-unstable=/etc/nix/inputs/nixpkgs-unstable"];
+  nix.settings.nix-path = lib.mkForce [
+    "nixpkgs=/etc/nix/inputs/nixpkgs"
+    "nixpkgs-unstable=/etc/nix/inputs/nixpkgs-unstable"
+  ];
 
   nix.settings = {
-    substituters = [ 
+    substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://hyprland.cachix.org"
     ];
@@ -176,10 +157,33 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://hyprland.cachix.org"
     ];
-    trusted-public-keys = [
-      # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6IBMioiJM7ypFP8PwtkuGc="
-    ];
+    trusted-public-keys =
+      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "cn";
+    variant = "";
+  };
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  # hyprland
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  #   portalPackage =
+  #     hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  # };
+
+  # mesa not work
+  # hardware.graphics.package = pkgs-2505.mesa;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

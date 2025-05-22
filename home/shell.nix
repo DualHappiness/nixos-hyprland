@@ -8,9 +8,7 @@
   programs.bash = {
     enable = false;
     bashrcExtra = ''
-      # export WINDOWS_HOST=127.0.0.1
-      export WINDOWS_HOST=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
-
+      export WINDOWS_HOST=127.0.0.1
       export PROXY_PORT=44333
       export RUSTUP_DIST_SERVER="https://rsproxy.cn"
       export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
@@ -157,7 +155,7 @@
 
       use $"($nu_scripts)/themes/nu-themes/material-vivid.nu"
 
-      $env.WINDOWS_HOST = (open /etc/resolv.conf | grep nameserver | split row ' ' | get 1)
+      $env.WINDOWS_HOST = "127.0.0.1"
       $env.PROXY_PORT = 44333
       def --env proxy [] {
         $env.HTTP_PROXY = $"http://($env.WINDOWS_HOST):($env.PROXY_PORT)"
