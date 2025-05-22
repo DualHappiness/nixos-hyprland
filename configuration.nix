@@ -28,18 +28,30 @@
   time.timeZone = "Asia/Shanghai";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "zh_CN.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "zh_CN.UTF-8";
-    LC_IDENTIFICATION = "zh_CN.UTF-8";
-    LC_MEASUREMENT = "zh_CN.UTF-8";
-    LC_MONETARY = "zh_CN.UTF-8";
-    LC_NAME = "zh_CN.UTF-8";
-    LC_NUMERIC = "zh_CN.UTF-8";
-    LC_PAPER = "zh_CN.UTF-8";
-    LC_TELEPHONE = "zh_CN.UTF-8";
-    LC_TIME = "zh_CN.UTF-8";
+  i18n = {
+    defaultLocale = "zh_CN.UTF-8";
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+      	addons = with pkgs; [
+          rime-data
+          fcitx5-gtk
+          fcitx5-rime
+          fcitx5-chinese-addons
+        ];
+        settings.inputMethod = {
+        "Groups/0" = {
+          Name = "Default";
+          "Default Layout" = "us";
+          DefaultIM = "keyboard-us";
+        };
+        "Groups/0/Items/0".Name = "keyboard-us";
+        "Groups/0/Items/1".Name = "pinyin";
+        GroupOrder."0" = "Default"; 
+      };
+};
+    };
   };
 
   # Enable the X11 windowing system.
@@ -110,6 +122,9 @@
     rustup
   ];
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  ''; 
   nix.settings = {
     substituters = [ 
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
