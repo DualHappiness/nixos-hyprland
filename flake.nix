@@ -2,13 +2,12 @@
   description = "pure nixos";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
+    hyprland.url = "github:hyprwm/Hyprland";
     nu_scripts = {
       flake = false;
       url = "git+file:./home/nu_scripts";
@@ -27,17 +26,12 @@
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-2505= import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = system;
         specialArgs = {
           inherit version;
           inherit pkgs-unstable;
-          inherit pkgs-2505;
         } // inputs;
         modules = [
           ./configuration.nix

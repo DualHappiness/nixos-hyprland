@@ -43,6 +43,13 @@
       maple-mono-NF
     ];
   };
+  console = {
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    packages = [ pkgs.terminus_font ];
+    keyMap = "us";
+  };
+
 
 
   # Enable CUPS to print documents.
@@ -75,13 +82,6 @@
     password = " ";
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "dual";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -106,10 +106,10 @@
 
     nixd
     nixfmt-rfc-style
-
-    pkgs-unstable.v2rayn
-    pkgs-unstable.xray
   ];
+
+  # v2raya
+  services.v2raya.enable = true;
 
   # Setup default shell
   users.defaultUserShell = pkgs.nushell;
@@ -164,9 +164,16 @@
   };
 
   # Enable the X11 windowing system.
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "dual";
+
+  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
   services.xserver.enable = true;
 
-  # Configure keymap in X11
+  # # Configure keymap in X11
   services.xserver.xkb = {
     layout = "cn";
     variant = "";
@@ -175,16 +182,16 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
   # hyprland
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # programs.hyprland = {
   #   enable = true;
+  #   withUWSM = true;
   #   package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   #   portalPackage =
   #     hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   # };
-
-  # mesa not work
-  # hardware.graphics.package = pkgs-2505.mesa;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
