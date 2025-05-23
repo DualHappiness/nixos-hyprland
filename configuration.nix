@@ -103,8 +103,10 @@
     python311
     fontconfig
     nix-search-cli
-    nil
+
     nixd
+    nixfmt-rfc-style
+
     pkgs-unstable.v2rayn
     pkgs-unstable.xray
   ];
