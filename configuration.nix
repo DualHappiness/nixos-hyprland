@@ -11,6 +11,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 2;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -163,27 +164,7 @@
       [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
-  # Enable the X11 windowing system.
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "dual";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-  services.xserver.enable = true;
-
-  # # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "cn";
-    variant = "";
-  };
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # hyprland
+  # # hyprland
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # programs.hyprland = {
   #   enable = true;

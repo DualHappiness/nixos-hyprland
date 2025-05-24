@@ -38,6 +38,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = inputs;
+            home-manager.backupFileExtension = "bakcup";
             nixpkgs.config.allowUnfree = true;
             home-manager.useGlobalPkgs = true;
             home-manager.users.root = {
@@ -49,6 +50,10 @@
               imports = [ ./home.nix ];
             };
           }
+
+          # ./gnome.nix
+          ./display-manager.nix
+          ./hyprland.nix
         ];
       };
     };

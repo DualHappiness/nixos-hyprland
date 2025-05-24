@@ -40,11 +40,16 @@
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
     intel-compute-runtime
     intel-media-driver
     intel-ocl
     intel-vaapi-driver
     vpl-gpu-rt
+  ];
+  hardware.graphics.extraPackages32 = with pkgs; [
+    intel-vaapi-driver-32
+    intel-media-driver-32
   ];
 }
