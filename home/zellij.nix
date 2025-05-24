@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs.zellij = {
     enable = true;
     settings = {
@@ -17,7 +17,7 @@
           white = "#4c4f69";
         };
       };
-      theme = "catppuccin-latte";
+      # theme = "catppuccin-latte";
     };
   };
 }
