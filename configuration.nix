@@ -25,7 +25,7 @@
     defaultLocale = "zh_CN.UTF-8";
     inputMethod = {
       enable = true;
-      type = "ibus";
+      type = "fcitx5";
       ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
       fcitx5 = {
         addons = with pkgs; [
@@ -33,6 +33,9 @@
           fcitx5-gtk
           fcitx5-rime
           fcitx5-chinese-addons
+          fcitx5-material-color
+          fcitx5-pinyin-zhwiki
+          fcitx5-pinyin-moegirl
         ];
       };
     };
