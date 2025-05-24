@@ -6,7 +6,7 @@
     settings = {
       window.blur = true;
       font.normal.family = "Maple Mono NF";
-      font.size = 14;
+      # font.size = 14;
     };
   };
 

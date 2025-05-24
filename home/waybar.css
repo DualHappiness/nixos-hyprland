@@ -30,7 +30,7 @@ tooltip {
   border: 1px solid rgba(34, 34, 34, 0.5);
   border-radius: 15px;
 
-  font-family: "Inconsolata SemiBold", "Symbols Nerd Font";
+  font-family: "Maple Mono NF";
   font-size: 16px;
 }
 
@@ -46,10 +46,10 @@ tooltip {
 #workspaces {
   margin-top: 0px;
   margin-bottom: 0px;
-  padding: 0px 6px 0px 6px;
+  padding: 0px 2px 0px 2px;
   background-color: transparent;
 
-  font-family: "Inconsolata SemiBold", "Symbols Nerd Font";
+  font-family: "Sarasa UI SC";
   font-size: 16px;
 }
 

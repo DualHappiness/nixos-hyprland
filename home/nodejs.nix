@@ -1,5 +1,4 @@
 {lib, pkgs, ...}: {
-  nixpkgs.config.allowUnfree = true;
   home.file.".npmrc".source = ./.npmrc;
   home.packages = with pkgs; [nodejs github-copilot-cli];
   programs.nushell.extraEnv = lib.mkAfter ''

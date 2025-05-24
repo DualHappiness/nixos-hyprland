@@ -39,7 +39,6 @@
           {
             home-manager.extraSpecialArgs = inputs;
             home-manager.backupFileExtension = "bakcup";
-            nixpkgs.config.allowUnfree = true;
             home-manager.useGlobalPkgs = true;
             home-manager.users.root = {
               home.stateVersion = version;

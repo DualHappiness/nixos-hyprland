@@ -31,11 +31,9 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format-icons": {
-      "1": "\uf303",
-      "2": "\uf121",
-      "3": "\uf484",
-      "4": "\uf013",
-      "5": "\uf11b"
+      "1": "❄",
+      "2": "\uf484",
+      "3": "C"
     }
   },
   "hyprland/window": {
@@ -48,8 +46,8 @@
   },
   "clock": {
     "interval": 1,
-    "format": "\uf017 {:%H:%M:%S}",
-    "format-alt": "\uf133 {:%Y-%m-%d %H:%M:%S}",
+    "format": "\uf017  {:%H:%M:%S}",
+    "format-alt": "\uf133  {:%Y-%m-%d %H:%M:%S}",
     "tooltip-format": "{calendar}",
     "timezone": "Asia/Chongqing",
     "calendar": {
@@ -75,23 +73,23 @@
   },
   "cpu": {
     "interval": 1,
-    "format": "\uf4bc {usage:1}%",
+    "format": "\uf4bc  {usage:2}%",
     "tooltip": true
   },
   "memory": {
     "interval": 1,
-    "format": "\uefc5 {used:0.1f}G",
+    "format": "\uefc5  {used:0.1f}G",
     "tooltip": true,
     "tooltip-format": " RAM: {used:0.2f}G / {total:0.2f}G\nSwap: {swapUsed:0.2f}G / {swapTotal:0.2f}G"
   },
   "network": {
     "interval": 1,
-    "format-wifi": "\uf1eb {essid} ({signalStrength}%)",
-    "format-ethernet": "\uef09 {ifname}",
-    "format-linked": "\ueb32 No IP ({ifname})",
-    "format-disconnected": "\uf071 Disconnected",
+    "format-wifi": "\uf1eb  {essid} ({signalStrength}%)",
+    "format-ethernet": "\uef09  {ifname}",
+    "format-linked": "\ueb32  No IP ({ifname})",
+    "format-disconnected": "\uf071  Disconnected",
     "tooltip-format": "{ifname}: {ipaddr}/{cidr}, Gateway: {gwaddr}",
-    "format-alt": "\uef09 {ipaddr}/{cidr}"
+    "format-alt": "\uef09  {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     "scroll-step": 5,
@@ -118,7 +116,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
+    "format": "{icon}  {capacity}%",
     "format-icons": [
       "",
       "",
