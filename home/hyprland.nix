@@ -21,6 +21,9 @@
   programs.rofi.enable = true;
   services.cliphist.enable = true;
 
+  services.mako.enable = true;
+  home.file.".config/mako/config".source = ./mako.config;
+
   home.packages = with pkgs; [
     pulseaudio
     brightnessctl
@@ -31,7 +34,6 @@
     grim
     slurp
 
-    cliphist
     # wl-clipboard
     wl-clipboard-rs
 
