@@ -56,4 +56,16 @@
     enable = true;
     extraConfig = builtins.readFile ./hyprland.conf;
   };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "papirus";
+      package = pkgs.papirus-icon-theme;
+    };
+    theme = {
+      name = "catppuccin-mocha-mauve-standard";
+      package = pkgs.catppuccin-gtk.override { accents = ["mauve"]; variant = "mocha"; };
+    };
+  };
 }

@@ -14,8 +14,13 @@
   boot.loader.timeout = 1;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
+
+  networking.networkmanager = {
+    enable = true;
+    # wifi.backend = "iwd";
+  };
+  # networking.wireless.iwd.enable = true;
+  # networking.wireless.iwd.settings.DriverQuirks.UseDefaultInterface = false;
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -168,16 +173,6 @@
     trusted-public-keys =
       [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
-
-  # # hyprland
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # programs.hyprland = {
-  #   enable = true;
-  #   withUWSM = true;
-  #   package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  #   portalPackage =
-  #     hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

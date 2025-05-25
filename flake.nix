@@ -45,19 +45,20 @@
           ./home.nix
         ];
       };
+      attrs = {
+        inherit version;
+        inherit pkgs-unstable;
+      } // inputs;
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = system;
-        specialArgs = {
-          inherit version;
-          inherit pkgs-unstable;
-        } // inputs;
+        specialArgs = attrs;
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = attrs;
             home-manager.backupFileExtension = "bakcup";
             home-manager.useGlobalPkgs = true;
             home-manager.users.root = home-config;
