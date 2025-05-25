@@ -22,6 +22,9 @@
   services.cliphist.enable = true;
 
   home.packages = with pkgs; [
+    pulseaudio
+    brightnessctl
+    
     hyprls
     iwgtk
     blueberry
@@ -33,6 +36,7 @@
     wl-clipboard-rs
 
     pyprland
+
   ];
 
   home.file.".config/hypr/pyprland.toml".source = ./pyprland.toml;
