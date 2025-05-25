@@ -6,7 +6,7 @@
     settings = {
       window.blur = true;
       font.normal.family = "Maple Mono NF";
-      # font.size = 14;
+      font.size = 12;
     };
   };
 
@@ -18,8 +18,19 @@
   home.file.".config/waybar/config".source = ./waybar.config.json;
   home.file.".config/waybar/style.css".source = ./waybar.css;
 
+  programs.rofi.enable = true;
+  services.cliphist.enable = true;
+
   home.packages = with pkgs; [
     hyprls
+    iwgtk
+    blueberry
+    grim
+    slurp
+
+    cliphist
+    # wl-clipboard
+    wl-clipboard-rs
   ];
 
   wayland.windowManager.hyprland = {
