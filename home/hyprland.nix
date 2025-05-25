@@ -31,7 +31,11 @@
     cliphist
     # wl-clipboard
     wl-clipboard-rs
+
+    pyprland
   ];
+
+  home.file.".config/hypr/pyprland.toml".source = ./pyprland.toml;
 
   wayland.windowManager.hyprland = {
     enable = true;
