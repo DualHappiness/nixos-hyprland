@@ -10,7 +10,6 @@
     };
   };
 
-
   programs.tofi.enable = true;
   home.file.".config/tofi/config".source = ./tofi.config;
 
@@ -24,10 +23,20 @@
   services.mako.enable = true;
   home.file.".config/mako/config".source = ./mako.config;
 
+  programs.zen-browser = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    policies = {
+      DisableAppUpdate = true;
+      DisableTelemetry = true;
+      # find more options here: https://mozilla.github.io/policy-templates/
+    };
+  };
+
   home.packages = with pkgs; [
     pulseaudio
     brightnessctl
-    
+
     hyprls
     iwgtk
     blueberry

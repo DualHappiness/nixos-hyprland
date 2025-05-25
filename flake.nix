@@ -8,6 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+      # to have it up-to-date or simply don't specify the nixpkgs input
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nu_scripts = {
       flake = false;
       url = "git+file:./home/nu_scripts";
@@ -18,7 +24,13 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }@inputs:
     let
       version = "25.05";
       system = "x86_64-linux";
@@ -26,7 +38,15 @@
         inherit system;
         config.allowUnfree = true;
       };
-    in {
+      home-config = {
+        home.stateVersion = version;
+        imports = [
+          inputs.zen-browser.homeModules.beta
+          ./home.nix
+        ];
+      };
+    in
+    {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = system;
         specialArgs = {
@@ -40,14 +60,8 @@
             home-manager.extraSpecialArgs = inputs;
             home-manager.backupFileExtension = "bakcup";
             home-manager.useGlobalPkgs = true;
-            home-manager.users.root = {
-              home.stateVersion = version;
-              imports = [ ./home.nix ];
-            };
-            home-manager.users.dual = {
-              home.stateVersion = version;
-              imports = [ ./home.nix ];
-            };
+            home-manager.users.root = home-config;
+            home-manager.users.dual = home-config;
           }
 
           # ./gnome.nix
