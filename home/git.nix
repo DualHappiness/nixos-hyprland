@@ -24,8 +24,5 @@
 
   programs.gitui.enable = true;
   programs.gitui.theme = builtins.readFile "${catppuccin-gitui}/themes/catppuccin-latte.ron";
-  home.file.".config/gitui" = {
-    source = "${catppuccin-gitui}/themes";
-    recursive = true;
-  };
+  home.packages = [ pkgs.catppuccin ];
 }

@@ -17,10 +17,8 @@
 
   networking.networkmanager = {
     enable = true;
-    # wifi.backend = "iwd";
+    wifi.backend = "iwd";
   };
-  # networking.wireless.iwd.enable = true;
-  # networking.wireless.iwd.settings.DriverQuirks.UseDefaultInterface = false;
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -140,8 +138,8 @@
   boot.loader.systemd-boot.configurationLimit = 10;
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
+    dates = "daily";
+    options = "--delete-older-than 7d";
   };
   nix.settings.auto-optimise-store = true;
 
