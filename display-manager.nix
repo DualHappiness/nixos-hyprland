@@ -6,22 +6,24 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet \
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
           --time --time-format '%I:%M %p | %a • %h | %F' \
-          --cmd 'uwsm start hyprland'";
-        user    = "greeter";
+          -g NixOS \
+          --remember --remember-session --kb-power 12 \
+          --cmd 'uwsm start hyprland'
+        '';
       };
     };
   };
 
-  users.users.greeter = {
-    isNormalUser = false;
-    description  = "greetd greeter user";
-    extraGroups  = [ "video" "audio" ];
-    linger        = true;
-  };
-
   environment.systemPackages = with pkgs; [
     greetd.tuigreet
+  ];
+
+  # NOTE: issus closed but problem still happen
+  # https://github.com/NixOS/nixpkgs/issues/248323
+  systemd.tmpfiles.rules = [
+    "d '/var/cache/tuigreet' - greeter greeter - -"
   ];
 }

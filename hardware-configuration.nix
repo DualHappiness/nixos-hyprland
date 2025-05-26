@@ -56,7 +56,8 @@
   hardware.trackpoint = {
     enable = true;
     device = "TPPS/2 Elan TrackPoint";
-    speed = 150;
+    speed = 255;
+    sensitivity = 255;
     emulateWheel = true;
   };
 }
