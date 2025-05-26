@@ -47,7 +47,7 @@
     wl-clipboard-rs
 
     pyprland
-
+    nautilus
   ];
 
   home.file.".config/hypr/pyprland.toml".source = ./pyprland.toml;
