@@ -52,4 +52,11 @@
     intel-vaapi-driver-32
     intel-media-driver-32
   ];
+
+  hardware.trackpoint = {
+    enable = true;
+    device = "TPPS/2 Elan TrackPoint";
+    speed = 150;
+    emulateWheel = true;
+  };
 }

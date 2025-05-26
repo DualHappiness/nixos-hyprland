@@ -62,6 +62,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.fprintd.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -111,8 +113,8 @@
     nixd
     nixfmt-rfc-style
 
-    busybox
-    # distrobox
+    busybox    
+    fprintd
   ];
 
   # v2raya

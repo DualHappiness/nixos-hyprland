@@ -68,4 +68,6 @@
       package = pkgs.catppuccin-gtk.override { accents = ["mauve"]; variant = "mocha"; };
     };
   };
+
+  programs.hyprlock.enable = true;
 }
