@@ -25,7 +25,7 @@
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "zh_CN.UTF-8";
+    defaultLocale = "en_US.UTF-8";
     inputMethod = {
       enable = true;
       type = "fcitx5";
@@ -115,6 +115,7 @@
     nixfmt-rfc-style
 
     busybox
+    # distrobox
   ];
 
   # v2raya
