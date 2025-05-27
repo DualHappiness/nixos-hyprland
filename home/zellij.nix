@@ -2,6 +2,7 @@
   programs.zellij = {
     enable = true;
     settings = {
+      show_startup_tips = false;
       themes = {
         catppuccin-latte = {
           bg = "#acb0be";
