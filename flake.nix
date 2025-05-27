@@ -14,6 +14,7 @@
       # to have it up-to-date or simply don't specify the nixpkgs input
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix/release-25.05";
     nu_scripts = {
       flake = false;
       url = "git+file:./home/nu_scripts";
@@ -29,6 +30,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      stylix,
       ...
     }@inputs:
     let
@@ -61,9 +63,12 @@
             home-manager.extraSpecialArgs = attrs;
             home-manager.backupFileExtension = "bakcup";
             home-manager.useGlobalPkgs = true;
-            home-manager.users.root = home-config;
+            # home-manager.users.root = home-config;
             home-manager.users.dual = home-config;
           }
+
+          stylix.nixosModules.stylix
+          ./stylix.nix
 
           # ./gnome.nix
           ./display-manager.nix
