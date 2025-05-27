@@ -206,7 +206,7 @@
   services.openvpn.servers = {
     zelos = {
       autoStart = false;
-      config = ''config ~/.config/openvpn/zelos.ovpn'';
+      config = ''config /home/dual/.config/openvpn/zelos.ovpn'';
     };
   };
   # Some programs need SUID wrappers, can be configured further or are
