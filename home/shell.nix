@@ -115,9 +115,6 @@
       grep = "rg";
       cat = "bat";
       ze = "zellij";
-      docker = "uwsm app -- docker";
-      podman = "uwsm app -- podman";
-      distrobox = "uwsm app -- distrobox";
     };
     environmentVariables = {
       EDITOR = "hx";
