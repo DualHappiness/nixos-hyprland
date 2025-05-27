@@ -2,9 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, pkgs-unstable, version, nixpkgs, nixpkgs-unstable, hyprland
-, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  lib,
+  config,
+  pkgs,
+  pkgs-unstable,
+  version,
+  nixpkgs,
+  nixpkgs-unstable,
+  hyprland,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -29,7 +40,10 @@
     inputMethod = {
       enable = true;
       type = "fcitx5";
-      ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
+      ibus.engines = with pkgs.ibus-engines; [
+        libpinyin
+        rime
+      ];
       fcitx5 = {
         addons = with pkgs; [
           rime-data
@@ -57,12 +71,23 @@
     keyMap = "us";
   };
 
-
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   services.fprintd.enable = true;
+  services.thermald.enable = true;
+
+  services.tlp.enable = true;
+  services.tlp.settings = {
+    CPU_DRIVER_OPMODE_ON_AC = "passive";
+    CPU_DRIVER_OPMODE_ON_BAT = "passive";
+
+    CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+    CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+
+    CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -87,10 +112,12 @@
   users.users.dual = {
     isNormalUser = true;
     description = "dual";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     password = " ";
   };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -113,7 +140,7 @@
     nixd
     nixfmt-rfc-style
 
-    busybox    
+    busybox
     fprintd
   ];
 
@@ -168,8 +195,7 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://hyprland.cachix.org"
     ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
