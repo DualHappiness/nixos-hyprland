@@ -1,5 +1,3 @@
-theme = "tokyonight"
-
 [editor]
 true-color = true
 lsp = { display-messages = true }

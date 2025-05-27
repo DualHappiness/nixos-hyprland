@@ -1,27 +1,52 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.kitty.enable = true;
   programs.alacritty = {
     enable = true;
     settings = {
       window.blur = true;
-      font.normal.family = "Maple Mono NF";
       font.size = 12;
     };
   };
 
+  # TODO: use rofi instead
   programs.tofi.enable = true;
-  home.file.".config/tofi/config".source = ./tofi.config;
-
-  programs.waybar.enable = true;
-  home.file.".config/waybar/config".source = ./waybar.config.json;
-  home.file.".config/waybar/style.css".source = ./waybar.css;
-
+  # home.file.".config/tofi/config".source = ./tofi.config;
   programs.rofi.enable = true;
-  services.cliphist.enable = true;
 
-  services.mako.enable = true;
-  home.file.".config/mako/config".source = ./mako.config;
+  stylix.targets.waybar.addCss = false;
+  programs.waybar = {
+    enable = true;
+    style = lib.mkAfter (builtins.readFile ./waybar.css);
+  };
+  home.file.".config/waybar/config".source = ./waybar.config.json;
+
+  services.cliphist.enable = true;
+  services.mako = {
+    enable = true;
+    settings = {
+      sort = "-time";
+      layer = "overlay";
+      width = 450;
+      height = 150;
+      border-size = 1;
+      border-radius = 12;
+      icons = 1;
+      max-icon-size = 64;
+      default-timeout = 5000;
+      ignore-timeout = 0;
+      margin = 12;
+      padding = "12,20";
+
+      # NOTE: stylix work wrong with font size
+      # font = lib.mkForce "Sarasa Term SC 16";
+
+      "urgency=critical" = {
+        default-timeout = 0;
+      };
+
+    };
+  };
 
   programs.zen-browser = {
     enable = true;
@@ -55,21 +80,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./hyprland.conf;
-  };
-
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "papirus";
-      package = pkgs.papirus-icon-theme;
-    };
-    theme = {
-      name = "catppuccin-mocha-mauve-standard";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
-        variant = "mocha";
-      };
-    };
   };
 
   programs.hyprlock.enable = true;

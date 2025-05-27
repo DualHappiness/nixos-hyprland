@@ -138,22 +138,22 @@
       const nu_scripts = "~/.config/nushell/nu_scripts"
       const nu_completions = $"($nu_scripts)/custom-completions"
       use $"($nu_completions)/nix/nix-completions.nu" *
-      use $"($nu_completions)/docker/docker-completions.nu" *
-      use $"($nu_completions)/curl/curl-completions.nu" *
-      use $"($nu_completions)/less/less-completions.nu" *
       use $"($nu_completions)/bat/bat-completions.nu" *
+      use $"($nu_completions)/cargo/cargo-completions.nu" *
+      use $"($nu_completions)/curl/curl-completions.nu" *
+      use $"($nu_completions)/docker/docker-completions.nu" *
       use $"($nu_completions)/gh/gh-completions.nu" *
       use $"($nu_completions)/git/git-completions.nu" *
-      use $"($nu_completions)/rustup/rustup-completions.nu" *
-      use $"($nu_completions)/cargo/cargo-completions.nu" *
-      use $"($nu_completions)/rg/rg-completions.nu" *
-      use $"($nu_completions)/zellij/zellij-completions.nu" *
-      use $"($nu_completions)/tealdeer/tldr-completions.nu" *
-      use $"($nu_completions)/ssh/ssh-completions.nu" *
       use $"($nu_completions)/just/just-completions.nu" *
-      use $"($nu_completions)/gh/gh-completions.nu" *
-
-      use $"($nu_scripts)/themes/nu-themes/material-vivid.nu"
+      use $"($nu_completions)/less/less-completions.nu" *
+      use $"($nu_completions)/nix/nix-completions.nu" *
+      use $"($nu_completions)/rg/rg-completions.nu" *
+      use $"($nu_completions)/rustup/rustup-completions.nu" *
+      use $"($nu_completions)/ssh/ssh-completions.nu" *
+      use $"($nu_completions)/tar/tar-completions.nu" *
+      use $"($nu_completions)/tealdeer/tldr-completions.nu" *
+      use $"($nu_completions)/zellij/zellij-completions.nu" *
+      use $"($nu_completions)/zoxide/zoxide-completions.nu" *
 
       $env.WINDOWS_HOST = "127.0.0.1"
       $env.PROXY_PORT = 44333

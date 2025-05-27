@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   programs.helix.enable = true;
-  home.file = {
-    ".config/helix/config.toml".source = ./helix.config.toml;
-  };
+  programs.helix.defaultEditor = true;
+  programs.helix.extraConfig = builtins.readFile ./helix.config.toml;
   home.packages = with pkgs; [
-    nil
     taplo
     nodePackages.vscode-langservers-extracted
     terraform-ls
@@ -15,5 +13,6 @@
     yaml-language-server
     cmake-language-server
     lua-language-server
+    nixd
   ];
 }
