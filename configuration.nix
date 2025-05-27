@@ -200,9 +200,15 @@
 
   # auto mount
   services.devmon.enable = true;
-  services.gvfs.enable = true; 
+  services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  services.openvpn.servers = {
+    zelos = {
+      autoStart = false;
+      config = ''config ~/.config/openvpn/zelos.ovpn'';
+    };
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
