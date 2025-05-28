@@ -153,7 +153,6 @@
       use $"($nu_completions)/tar/tar-completions.nu" *
       use $"($nu_completions)/tealdeer/tldr-completions.nu" *
       use $"($nu_completions)/zellij/zellij-completions.nu" *
-      use $"($nu_completions)/zoxide/zoxide-completions.nu" *
 
       $env.WINDOWS_HOST = "127.0.0.1"
       $env.PROXY_PORT = 44333
