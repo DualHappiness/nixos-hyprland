@@ -84,4 +84,12 @@
 
   programs.hyprlock.enable = true;
   services.hyprpolkitagent.enable = true;
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [ "~/backgrounds/current.jpg" ];
+      wallpaper = [ ",~/backgrounds/current.jpg" ];
+    };
+  };
 }

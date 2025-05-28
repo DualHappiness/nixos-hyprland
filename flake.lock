@@ -100,22 +100,6 @@
         "type": "github"
       }
     },
-    "catppuccin-gitui": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740266467,
-        "narHash": "sha256-DRK/j3899qJW4qP1HKzgEtefz/tTJtwPkKtoIzuoTj0=",
-        "ref": "refs/heads/main",
-        "rev": "df2f59f847e047ff119a105afff49238311b2d36",
-        "revCount": 15,
-        "type": "git",
-        "url": "file:./home/catppuccin-gitui"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:./home/catppuccin-gitui"
-      }
-    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -703,7 +687,6 @@
     },
     "root": {
       "inputs": {
-        "catppuccin-gitui": "catppuccin-gitui",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",

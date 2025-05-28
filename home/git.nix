@@ -1,4 +1,4 @@
-{pkgs, catppuccin-gitui, ...}: {
+{
   home.file.".config/git/delta.themes.gitconfig".source = ./delta.themes.gitconfig;
   programs.git = {
     enable = true;
@@ -21,8 +21,5 @@
     };
   };
   programs.gh.enable = true;
-
   programs.gitui.enable = true;
-  programs.gitui.theme = builtins.readFile "${catppuccin-gitui}/themes/catppuccin-latte.ron";
-  home.packages = [ pkgs.catppuccin ];
 }

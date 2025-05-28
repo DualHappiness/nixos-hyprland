@@ -23,10 +23,6 @@
       flake = false;
       url = "git+file:./home/nu_scripts";
     };
-    catppuccin-gitui = {
-      flake = false;
-      url = "git+file:./home/catppuccin-gitui";
-    };
   };
 
   outputs =

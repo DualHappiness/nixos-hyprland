@@ -3,10 +3,6 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    # image = builtins.fetchurl {
-    #   url = "https://cdn.dynamicwallpaper.club/wallpapers/wqmsaakm50l/plants.heic";
-    #   sha256 = "sha256-YQs7MBz8/hFT1Oy5pFr2xffl1jL9yvrA2w9N8Tp+IsA=";
-    # };
     cursor = {
       name = "catppuccin-mocha-mavue-cursors";
       package = pkgs.catppuccin-cursors.mochaMauve;
@@ -18,7 +14,11 @@
       light = "Papirus Light";
       dark = "Papirus Dark";
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/material-lighter.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
+    opacity = {
+      terminal = 0.85;
+      popups = 0.95;
+    };
     fonts = {
       sizes = {
         terminal = 12;

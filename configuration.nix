@@ -123,7 +123,7 @@
     gcc
     glibc
     getent
-    python311
+    python3
     fontconfig
     nix-search-cli
 
@@ -131,7 +131,6 @@
     nixfmt-rfc-style
 
     busybox
-    fprintd
   ];
 
   # v2raya
