@@ -18,7 +18,7 @@
       light = "Papirus Light";
       dark = "Papirus Dark";
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material-lighter.yaml";
     fonts = {
       sizes = {
         terminal = 12;
