@@ -12,6 +12,12 @@
       package = pkgs.catppuccin-cursors.mochaMauve;
       size = 32;
     };
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus Light";
+      dark = "Papirus Dark";
+    };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       sizes = {

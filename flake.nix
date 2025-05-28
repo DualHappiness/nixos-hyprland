@@ -48,6 +48,7 @@
         home.stateVersion = version;
         imports = [
           inputs.zen-browser.homeModules.beta
+          stylix.homeModules.stylix
           ./home.nix
         ];
       };
@@ -70,10 +71,6 @@
             # home-manager.users.root = home-config;
             home-manager.users.dual = home-config;
           }
-
-          stylix.nixosModules.stylix
-          ./stylix.nix
-
           # ./gnome.nix
           ./display-manager.nix
           ./hyprland.nix
