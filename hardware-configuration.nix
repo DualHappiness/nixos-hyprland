@@ -60,4 +60,6 @@
     sensitivity = 255;
     emulateWheel = true;
   };
+
+  hardware.bluetooth.enable = true;
 }
