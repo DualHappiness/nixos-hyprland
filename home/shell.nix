@@ -96,11 +96,6 @@
     };
   };
 
-  # fastfetch
-  programs.fastfetch = {
-    enable = true;
-  };
-
   # nushell
   home.file.".config/nushell/nu_scripts" = {
     source = nu_scripts;
@@ -196,7 +191,7 @@
 
       source ~/.config/nushell/locals.nu
 
-      fastfetch -l nixos_old
+      fastfetch
     '';
   };
 }
