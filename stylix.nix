@@ -7,7 +7,7 @@
     #   url = "https://cdn.dynamicwallpaper.club/wallpapers/wqmsaakm50l/plants.heic";
     #   sha256 = "sha256-YQs7MBz8/hFT1Oy5pFr2xffl1jL9yvrA2w9N8Tp+IsA=";
     # };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     fonts = {
       sizes.popups = 16;
       serif = {
@@ -31,5 +31,4 @@
       };
     };
   };
-
 }

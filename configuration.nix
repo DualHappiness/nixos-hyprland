@@ -4,13 +4,10 @@
 
 {
   lib,
-  config,
   pkgs,
-  pkgs-unstable,
   version,
   nixpkgs,
   nixpkgs-unstable,
-  hyprland,
   ...
 }:
 {
@@ -56,13 +53,6 @@
         ];
       };
     };
-  };
-  fonts = {
-    packages = with pkgs; [
-      sarasa-gothic
-      dejavu_fonts
-      maple-mono.NF
-    ];
   };
   console = {
     earlySetup = true;
