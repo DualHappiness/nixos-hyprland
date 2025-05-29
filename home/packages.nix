@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     hurl
     fd
@@ -22,5 +23,7 @@
     alejandra
     just
     viu
+    termscp
+    yazi
   ];
 }

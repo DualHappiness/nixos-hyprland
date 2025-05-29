@@ -34,13 +34,10 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
+    extraLocales = [ "zh_CN.UTF-8/UTF-8" ];
     inputMethod = {
       enable = true;
       type = "fcitx5";
-      ibus.engines = with pkgs.ibus-engines; [
-        libpinyin
-        rime
-      ];
       fcitx5 = {
         addons = with pkgs; [
           rime-data
@@ -95,9 +92,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dual = {
     isNormalUser = true;
@@ -105,8 +99,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
-    password = " ";
   };
 
   # Allow unfree packages
@@ -127,9 +121,6 @@
     fontconfig
     nix-search-cli
 
-    nixd
-    nixfmt-rfc-style
-
     busybox
   ];
 
@@ -141,12 +132,24 @@
   environment.shells = with pkgs; [ nushell ];
 
   virtualisation = {
-    podman = {
+    # podman = {
+    #   enable = true;
+    #   # Create a `docker` alias for podman, to use it as a drop-in replacement
+    #   dockerCompat = true;
+    #   # Required for containers under podman-compose to be able to talk to each other.
+    #   defaultNetwork.settings.dns_enabled = true;
+    #   dockerSocket.enable = true;
+    # };
+    docker = {
       enable = true;
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
+      daemon.settings = {
+        log-driver = "journald";
+        storage-driver = "overlay2";
+      };
     };
   };
 

@@ -21,6 +21,7 @@
     };
     fonts = {
       sizes = {
+        applications = 14;
         terminal = 12;
         popups = 16;
       };
@@ -40,4 +41,7 @@
       };
     };
   };
+
+  stylix.targets.gtk.enable = false;
+  stylix.targets.waybar.enable = false;
 }

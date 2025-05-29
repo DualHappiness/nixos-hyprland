@@ -14,13 +14,6 @@
   # home.file.".config/tofi/config".source = ./tofi.config;
   programs.rofi.enable = true;
 
-  stylix.targets.waybar.addCss = false;
-  programs.waybar = {
-    enable = true;
-    style = lib.mkAfter (builtins.readFile ./waybar.css);
-  };
-  home.file.".config/waybar/config".source = ./waybar.config.json;
-
   services.cliphist.enable = true;
   services.mako = {
     enable = true;
