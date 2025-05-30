@@ -205,6 +205,11 @@ with lib;
           opacity: 1.0;
           min-width: 40px;
         }
+        #workspaces button.urgent {
+          color: #${config.lib.stylix.colors.base00};
+          background: #${config.lib.stylix.colors.base0F};
+          transition: ${betterTransition};
+        }
         #workspaces button:hover {
           font-weight: bold;
           border-radius: 16px;
