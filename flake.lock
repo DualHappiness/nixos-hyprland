@@ -722,15 +722,15 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1748455958,
-        "narHash": "sha256-/KFwI0YHL0dzRKEtxiTRnjKzs3CPGVrFHP4gpN3n91Q=",
-        "owner": "danth",
+        "lastModified": 1748522788,
+        "narHash": "sha256-O1HrTqfuid/SUqnrNVaAfi4/7owoTxL/SKT8pFs4tq0=",
+        "owner": "DualHappiness",
         "repo": "stylix",
-        "rev": "e13d234bcff4b65f6601a87d4a243f5d29141dbf",
+        "rev": "6603cfae0130be810d45fae01861e345dd366c9e",
         "type": "github"
       },
       "original": {
-        "owner": "danth",
+        "owner": "DualHappiness",
         "ref": "release-25.05",
         "repo": "stylix",
         "type": "github"

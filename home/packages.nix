@@ -18,11 +18,12 @@
 
     du-dust
     shfmt
-    wslu
 
     alejandra
     just
     viu
     termscp
+
+    feishu
   ];
 }

@@ -41,7 +41,5 @@
       };
     };
   };
-
-  stylix.targets.gtk.enable = false;
   stylix.targets.waybar.enable = false;
 }
