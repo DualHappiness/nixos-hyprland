@@ -1,6 +1,5 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
-  programs.kitty.enable = true;
   programs.alacritty = {
     enable = true;
     settings = {
@@ -8,11 +7,6 @@
       font.size = 12;
     };
   };
-
-  # TODO: use rofi instead
-  programs.tofi.enable = true;
-  # home.file.".config/tofi/config".source = ./tofi.config;
-  programs.rofi.enable = true;
 
   services.cliphist.enable = true;
   services.mako = {
@@ -75,7 +69,17 @@
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
-  programs.hyprlock.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 10;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
+    };
+  };
   services.hyprpolkitagent.enable = true;
 
   services.hyprpaper = {
