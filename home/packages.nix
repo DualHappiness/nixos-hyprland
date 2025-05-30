@@ -24,6 +24,5 @@
     just
     viu
     termscp
-    yazi
   ];
 }
