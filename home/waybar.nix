@@ -85,6 +85,7 @@ with lib;
           format-wifi = "{icon} {signalStrength:2}%";
           format-disconnected = "󰤮";
           tooltip = false;
+          on-click = "sleep 0.1 && iwgtk";
         };
         "tray" = {
           spacing = 12;
