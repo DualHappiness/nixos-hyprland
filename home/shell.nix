@@ -4,7 +4,8 @@
   pkgs,
   nu_scripts,
   ...
-}: {
+}:
+{
   programs.bash = {
     enable = false;
     bashrcExtra = ''
@@ -16,69 +17,8 @@
       export EDITOR=hx
     '';
   };
-  programs.zsh = {
-    enable = false;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    # syntaxHighlighting.enable = true;
-    shellAliases = {
-      ls = "lsd";
-      br = "broot";
-    };
-    envExtra = ''
-      export EDITOR=hx
-      export VI_MODE_SET_CURSOR=true
-    '';
-    oh-my-zsh = {
-      enable = true;
-      theme = "random";
-      plugins = [
-        "git"
-        "extract"
-        "z"
-        "vi-mode"
-        "history"
-        "sudo"
-        "emotty"
-        "emoji"
-        "vi-mode"
-      ];
-    };
-  };
-  programs.fish = {
-    enable = false;
-    shellAliases = {
-      vim = "hx";
-      ls = "lsd";
-    };
-    shellInit = ''
-      set -g -x EDITOR hx
-    '';
-    functions = {
-      proxy = ''
-        set -g -x HTTP_PROXY "http://$WINDOWS_HOST:$PROXY_PORT"
-        set -g -x HTTPS_PROXY "http://$WINDOWS_HOST:$PROXY_PORT"
-        set -g -x http_proxy "http://$WINDOWS_HOST:$PROXY_PORT"
-        set -g -x https_proxy "http://$WINDOWS_HOST:$PROXY_PORT"
-      '';
-      unproxy = ''
-        set -g -e HTTP_PROXY
-        set -g -e HTTPS_PROXY
-        set -g -e http_proxy
-        set -g -e https_proxy
-      '';
-    };
-  };
   programs.tealdeer.enable = true;
 
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = false;
-    enableZshIntegration = false;
-    enableNushellIntegration = true;
-    enableFishIntegration = true;
-  };
   programs.zoxide = {
     enable = true;
     enableBashIntegration = false;
@@ -149,45 +89,9 @@
       use $"($nu_completions)/tealdeer/tldr-completions.nu" *
       use $"($nu_completions)/zellij/zellij-completions.nu" *
 
-      $env.WINDOWS_HOST = "127.0.0.1"
-      $env.PROXY_PORT = 44333
-      def --env proxy [] {
-        $env.HTTP_PROXY = $"http://($env.WINDOWS_HOST):($env.PROXY_PORT)"
-        $env.HTTPS_PROXY = $"http://($env.WINDOWS_HOST):($env.PROXY_PORT)"
-        $env.http_proxy = $"http://($env.WINDOWS_HOST):($env.PROXY_PORT)"
-        $env.https_proxy = $"http://($env.WINDOWS_HOST):($env.PROXY_PORT)"
-      }
-      def --env unproxy [] {
-        hide-env HTTP_PROXY HTTPS_PROXY
-        hide-env http_proxy https_proxy
-      }
       $env.config.edit_mode = "vi";
       $env.config.cursor_shape.vi_insert = "line";
       $env.config.cursor_shape.vi_normal = "block";
-
-      module podman {
-        export def "images" [] {
-          ^podman images | lines | skip 1 | parse -r '(?P<RESPOSITORY>\S+)\s+(?P<TAG>\S+)\s+(?P<ID>\S+)\s+(?P<CREATED>\d+ \w+ ago)\s+(?P<SIZE>.*)'
-        }
-        export def "containers" [] {
-          let re = '(?P<CID>\S+)\s+(?P<IMAGE>\S+)\s+(?P<COMMAND>\S+)\s+(?P<CREATED>\d+ \w+ ago)\s+(?P<STATUS>Created|Exited \(\d+\) \d+ \w+ ago)\s*(?P<PORTS>.*tcp|.*udp|\s)\s*(?P<NAMES>\S+)\s*'
-          ^podman container ls -a | lines | skip 1 | parse -r $re
-        }
-      }
-      use podman *
-
-      module copilot {
-        export def "??" [...flags:string] {
-          ^github-copilot-cli what-the-shell ($flags)
-        }
-        export def "git?" [...flags:string] {
-          ^github-copilot-cli git-assist ($flags)
-        }
-        export def "gh?" [...flags:string] {
-          ^github-copilot-cli gh-assist ($flags)
-        }
-      }
-      use copilot *
 
       source ~/.config/nushell/locals.nu
 
