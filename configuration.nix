@@ -113,9 +113,12 @@
     getent
     python3
     fontconfig
-    nix-search-cli
 
     busybox
+
+    nvd
+    nix-search-cli
+    nix-output-monitor
   ];
 
   # v2raya
@@ -141,39 +144,41 @@
 
   # optimize nix store
   boot.loader.systemd-boot.configurationLimit = 10;
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
-  nix.settings.auto-optimise-store = true;
 
-  nix.package = pkgs.nixStable;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep 5 --keep-since 3d";
+    flake = "/etc/nixos";
+  };
 
   system.stateVersion = version;
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
-  nix.channel.enable = false;
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
   environment.etc."nix/inputs/nixpkgs-unstable".source = "${nixpkgs-unstable}";
-  nix.settings.nix-path = lib.mkForce [
-    "nixpkgs=/etc/nix/inputs/nixpkgs"
-    "nixpkgs-unstable=/etc/nix/inputs/nixpkgs-unstable"
-  ];
-
-  nix.settings = {
-    substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://hyprland.cachix.org"
-    ];
-    trusted-substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://hyprland.cachix.org"
-    ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  nix = {
+    package = pkgs.nixStable;
+    registry.nixpkgs.flake = nixpkgs;
+    registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+    channel.enable = false;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      nix-path = lib.mkForce [
+        "nixpkgs=/etc/nix/inputs/nixpkgs"
+        "nixpkgs-unstable=/etc/nix/inputs/nixpkgs-unstable"
+      ];
+      substituters = [
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://hyprland.cachix.org"
+      ];
+      trusted-substituters = [
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://hyprland.cachix.org"
+      ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    };
   };
 
   # auto mount
