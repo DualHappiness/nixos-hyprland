@@ -24,6 +24,7 @@
     viu
     termscp
 
+    pavucontrol
     feishu
   ];
 }
