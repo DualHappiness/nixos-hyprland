@@ -50,6 +50,7 @@
       grep = "rg";
       cat = "bat";
       ze = "zellij";
+      top = "btop";
     };
     environmentVariables = {
       EDITOR = "hx";
