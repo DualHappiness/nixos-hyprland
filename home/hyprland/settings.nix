@@ -3,8 +3,8 @@
     env = [
       "XCURSOR_SIZE,32"
       "XMODIFIERS, @im=fcitx5"
-      "GTK_IM_MODULE, wayland"
-      "QT_IM_MODULE, wayland"
+      # "GTK_IM_MODULE, wayland"
+      # "QT_IM_MODULE, wayland"
       "SDL_IM_MODULE, fcitx5"
       "QT_QPA_PLATFORMTHEME, qt6ct"
     ];

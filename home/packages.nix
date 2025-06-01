@@ -25,6 +25,5 @@
     termscp
 
     pavucontrol
-    feishu
   ];
 }
