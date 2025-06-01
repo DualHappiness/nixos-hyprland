@@ -12,6 +12,13 @@
     ./hyprland/rofi.nix
     ./hyprland/mako.nix
     ./hyprland/waybar.nix
+
+    ./hyprland/settings.nix
+    ./hyprland/animations-end4.nix
+    ./hyprland/binds.nix
+    ./hyprland/rules.nix
+    ./hyprland/workspace.nix
+    ./hyprland/exec-once.nix
   ];
   programs.alacritty = {
     enable = true;
@@ -33,9 +40,5 @@
     };
   };
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = builtins.readFile ./hyprland/hyprland.conf;
-  };
-
+  wayland.windowManager.hyprland.enable = true;
 }
