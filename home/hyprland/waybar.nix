@@ -9,6 +9,11 @@ let
 in
 with lib;
 {
+  imports = [
+    ./keybinds.nix
+    ./wlogout.nix
+  ];
+
   # Configure & Theme Waybar
   programs.waybar = {
     enable = true;

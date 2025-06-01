@@ -1,5 +1,18 @@
 { pkgs, ... }:
 {
+
+  imports = [
+    ./hyprland/hypridle.nix
+    ./hyprland/hyprlock.nix
+    ./hyprland/hyprpaper.nix
+    ./hyprland/pyprland.nix
+
+    ./hyprland/packages.nix
+
+    ./hyprland/rofi.nix
+    ./hyprland/mako.nix
+    ./hyprland/waybar.nix
+  ];
   programs.alacritty = {
     enable = true;
     settings = {
@@ -8,32 +21,8 @@
     };
   };
 
+  services.hyprpolkitagent.enable = true;
   services.cliphist.enable = true;
-  services.mako = {
-    enable = true;
-    settings = {
-      sort = "-time";
-      layer = "overlay";
-      width = 450;
-      height = 150;
-      border-size = 1;
-      border-radius = 12;
-      icons = 1;
-      max-icon-size = 64;
-      default-timeout = 5000;
-      ignore-timeout = 0;
-      margin = 12;
-      padding = "12,20";
-
-      # NOTE: stylix work wrong with font size
-      # font = lib.mkForce "Sarasa Term SC 16";
-
-      "urgency=critical" = {
-        default-timeout = 0;
-      };
-
-    };
-  };
 
   programs.zen-browser = {
     enable = true;
@@ -41,50 +30,12 @@
     policies = {
       DisableAppUpdate = true;
       DisableTelemetry = true;
-      # find more options here: https://mozilla.github.io/policy-templates/
     };
   };
-
-  home.packages = with pkgs; [
-    pulseaudio
-    brightnessctl
-
-    hyprls
-    iwgtk
-    blueberry
-    grim
-    slurp
-
-    wl-clipboard
-    # wl-clipboard-rs
-
-    pyprland
-    nautilus
-  ];
-
-  home.file.".config/hypr/pyprland.toml".source = ./pyprland.toml;
 
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ./hyprland.conf;
+    extraConfig = builtins.readFile ./hyprland/hyprland.conf;
   };
 
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      general = {
-        grace = 10;
-        hide_cursor = true;
-      };
-    };
-  };
-  services.hyprpolkitagent.enable = true;
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = [ "~/backgrounds/current.jpg" ];
-      wallpaper = [ ",~/backgrounds/current.jpg" ];
-    };
-  };
 }
