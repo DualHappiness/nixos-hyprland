@@ -1,6 +1,6 @@
 {
   wayland.windowManager.hyprland.settings = {
-    layerrules = [
+    layerrule = [
       # Layer Rules
       "blur, waybar"
       "ignorezero, waybar"
@@ -10,7 +10,7 @@
       "ignorezero, launcher"
     ];
 
-    windowrules = [
+    windowrulev2 = [
       # Window Rules
       "tile,class:(Alacritty)"
       "float,class:(QQ) # QQ Popups"
