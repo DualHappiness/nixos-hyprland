@@ -21,7 +21,7 @@
     };
     nu_scripts = {
       flake = false;
-      url = "git+file:./home/nu_scripts";
+      url = "github:nushell/nu_scripts";
     };
   };
 
