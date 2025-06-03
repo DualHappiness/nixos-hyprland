@@ -10,8 +10,8 @@
     grim
     slurp
 
-    # wl-clipboard
-    wl-clipboard-rs
+    wl-clipboard
+    # wl-clipboard-rs
 
     nautilus
   ];
