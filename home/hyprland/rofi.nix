@@ -48,7 +48,7 @@
         "imagebox" = {
           padding = mkLiteral "20px";
           background-color = lib.mkForce (mkLiteral "transparent");
-          background-image = mkLiteral ''url("~/backgrounds/wallhaven-je9ldp.jpg", height)'';
+          background-image = mkLiteral ''url("~/backgrounds/rofi.jpg", height)'';
           orientation = mkLiteral "vertical";
           children = map mkLiteral [
             "inputbar"
@@ -168,7 +168,7 @@
     inputbar {
       padding: 75px 40px;
       background-color: transparent;
-      background-image: url("~/backgrounds/wallhaven-je9ldp.jpg", width);
+      background-image: url("~/backgrounds/rofi.jpg", width);
       children: [ "textbox-prompt-colon", "entry" ];
     }
     textbox-prompt-colon {
