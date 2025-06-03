@@ -6,10 +6,18 @@
     userName = "dualwu";
     userEmail = "dualwu_tech@outlook.com";
     extraConfig = {
-      core = {editor = "hx";};
-      safe = {directory = "/etc/nixos";};
-      push = {autoSetupRemote = true;};
-      include = {path = "~/.config/git/delta.themes.gitconfig";};
+      core = {
+        editor = "hx";
+      };
+      safe = {
+        directory = "/etc/nixos";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
+      include = {
+        path = "~/.config/git/delta.themes.gitconfig";
+      };
     };
     delta = {
       enable = true;

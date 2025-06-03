@@ -104,6 +104,8 @@
         hide-env http_proxy https_proxy
       }
 
+      ssh-add ~/.ssh/jump-server | complete | ignore
+
       fastfetch
     '';
   };
