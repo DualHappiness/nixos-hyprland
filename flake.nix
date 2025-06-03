@@ -23,6 +23,10 @@
       flake = false;
       url = "github:nushell/nu_scripts";
     };
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -31,6 +35,7 @@
       nixpkgs-unstable,
       home-manager,
       stylix,
+      nur,
       ...
     }@inputs:
     let
@@ -59,7 +64,11 @@
         specialArgs = attrs;
         modules = [
           ./configuration.nix
+          # nur config
+          { nixpkgs.overlays = [ nur.overlays.default ]; }
+
           home-manager.nixosModules.home-manager
+          # home manager global config
           {
             home-manager.extraSpecialArgs = attrs;
             home-manager.backupFileExtension = "bakcup";

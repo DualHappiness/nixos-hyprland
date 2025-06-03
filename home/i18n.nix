@@ -4,7 +4,11 @@
     enable = true;
     type = "fcitx5";
     fcitx5 = {
-      addons = with pkgs; [ fcitx5-rime ];
+      addons = with pkgs; [
+        (fcitx5-rime.override {
+          rimeDataPkgs = with pkgs.nur.repos.linyinfeng.rimePackages; withRimeDeps [ rime-ice ];
+        })
+      ];
       waylandFrontend = true;
       settings.inputMethod = {
         GroupOrder."0" = "Default";
@@ -18,4 +22,9 @@
       };
     };
   };
+  home.file.".local/share/fcitx5/rime/default.custom.yaml".text = ''
+    # in .local/share/fcitx5/rime/default.custom.yaml
+    patch:
+      __include: rime_ice_suggestion:/
+  '';
 }
