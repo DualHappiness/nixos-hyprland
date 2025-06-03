@@ -174,4 +174,6 @@
       config = ''config /home/dual/.config/openvpn/zelos.ovpn'';
     };
   };
+
+  services.fwupd.enable = true;
 }
