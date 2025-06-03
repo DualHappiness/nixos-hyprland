@@ -7,9 +7,9 @@
     ];
     # Bind workspace
     workspace = [
-      "r[1-3], monitor:0"
-      "r[4-7], monitor:1"
-      "r[8], monitor:2"
+      "r[1], monitor:0"
+      "r[2-3], monitor:1"
+      "r[4], monitor:2"
     ];
   };
 }
