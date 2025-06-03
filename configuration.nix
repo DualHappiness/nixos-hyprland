@@ -27,6 +27,9 @@
     enable = true;
     wifi.backend = "iwd";
   };
+  networking.extraHosts = ''
+    123.60.141.172 pony-relay.zelostech.com.cn
+  '';
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
