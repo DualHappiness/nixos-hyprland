@@ -71,7 +71,7 @@
           # home manager global config
           {
             home-manager.extraSpecialArgs = attrs;
-            home-manager.backupFileExtension = "bakcup";
+            # home-manager.backupFileExtension = "bakcup";
             home-manager.useGlobalPkgs = true;
             # home-manager.users.root = home-config;
             home-manager.users.dual = home-config;

@@ -98,8 +98,5 @@
       }
     '';
   };
-  home.file.".config/wlogout/icons" = {
-    source = ./wlogout-icons;
-    recursive = true;
-  };
+  home.file.".config/wlogout/icons".source = ./wlogout-icons;
 }

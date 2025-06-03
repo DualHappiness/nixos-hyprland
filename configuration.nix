@@ -22,7 +22,7 @@
   boot.loader.timeout = 1;
 
   networking.hostName = "nixos"; # Define your hostname.
-
+  systemd.services.NetworkManager-wait-online.enable = false;
   networking.networkmanager = {
     enable = true;
     wifi.backend = "iwd";
@@ -116,10 +116,7 @@
   virtualisation = {
     docker = {
       enable = true;
-      # rootless = {
-      #   enable = true;
-      #   setSocketVariable = true;
-      # };
+      enableOnBoot = false;
       daemon.settings = {
         log-driver = "journald";
         storage-driver = "overlay2";

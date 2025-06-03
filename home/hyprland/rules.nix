@@ -31,6 +31,7 @@
       "float,class:(blueberry.py)"
       "float,class:(*iwgtk)"
       "float,title:(iwgtk)"
+      "float,title:(xdg-desktop-portal-gtk)"
       # always render
       "renderunfocused,class:(vseeface.exe)"
       # immediate render

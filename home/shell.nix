@@ -9,8 +9,6 @@
   programs.bash = {
     enable = false;
     bashrcExtra = ''
-      export WINDOWS_HOST=127.0.0.1
-      export PROXY_PORT=44333
       export RUSTUP_DIST_SERVER="https://rsproxy.cn"
       export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
       alias ls=lsd
@@ -37,10 +35,7 @@
   };
 
   # nushell
-  home.file.".config/nushell/nu_scripts" = {
-    source = nu_scripts;
-    recursive = true;
-  };
+  home.file.".config/nushell/nu_scripts".source = nu_scripts;
   programs.nushell = {
     enable = true;
     shellAliases = {
@@ -95,6 +90,19 @@
       $env.config.cursor_shape.vi_normal = "block";
 
       source ~/.config/nushell/locals.nu
+
+      $env.PROXY_HOST = "127.0.0.1"
+      $env.PROXY_PORT = 44333
+      def --env proxy [] {
+        $env.HTTP_PROXY = $"http://($env.PROXY_HOST):($env.PROXY_PORT)"
+        $env.HTTPS_PROXY = $"http://($env.PROXY_HOST):($env.PROXY_PORT)"
+        $env.http_proxy = $"http://($env.PROXY_HOST):($env.PROXY_PORT)"
+        $env.https_proxy = $"http://($env.PROXY_HOST):($env.PROXY_PORT)"
+      }
+      def --env unproxy [] {
+        hide-env HTTP_PROXY HTTPS_PROXY
+        hide-env http_proxy https_proxy
+      }
 
       fastfetch
     '';
