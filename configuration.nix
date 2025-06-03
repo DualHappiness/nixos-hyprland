@@ -181,4 +181,7 @@
   services.fwupd.enable = true;
 
   programs.ssh.startAgent = true;
+  programs.ssh.extraConfig = ''
+    ForwardAgent yes
+  '';
 }

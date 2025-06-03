@@ -104,7 +104,7 @@
         hide-env http_proxy https_proxy
       }
 
-      ssh-add ~/.ssh/jump-server | complete | ignore
+      ssh-add ~/.ssh/ezone2 | complete | ignore
 
       fastfetch
     '';
