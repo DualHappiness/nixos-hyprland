@@ -14,7 +14,7 @@
         ",xf86monbrightnessup, exec, brightnessctl set 10%+"
 
         # Hyprland hotkeys
-        "$mainMod, W, killactive"
+        "$mainMod SHIFT, W, killactive"
         "$mainMod, grave, exec, uwsm app -- alacritty"
         "$mainMod SHIFT, M, exit"
         "$mainMod, E, exec, [float] nautilus --new-window"
