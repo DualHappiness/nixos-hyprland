@@ -38,7 +38,6 @@
       "renderunfocused,class:(vseeface.exe)"
       # immediate render
       "immediate, class:^(cs2)$"
-
     ];
   };
 }

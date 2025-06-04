@@ -14,6 +14,7 @@
       kb_variant = "";
       kb_model = "";
       follow_mouse = 1;
+      follow_mouse_threshold = 100;
 
       touchpad = {
         natural_scroll = true;
@@ -25,7 +26,7 @@
     general = {
       gaps_in = 4;
       gaps_out = 8;
-      border_size = 2;
+      border_size = 4;
       allow_tearing = true;
 
       layout = "dwindle";
