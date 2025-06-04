@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  theme = "tomorrow";
+in
 {
   stylix = {
     enable = true;
@@ -14,7 +17,7 @@
       light = "Papirus Light";
       dark = "Papirus Dark";
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
     opacity = {
       terminal = 0.85;
       popups = 0.95;

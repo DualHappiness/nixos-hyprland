@@ -13,6 +13,7 @@
     windowrulev2 = [
       # Window Rules
       "tile,class:(Alacritty)"
+      "float,class:(Alacritty-Popups)"
       "float,class:(QQ) # QQ Popups"
       "float,title:(Volume Control) # Volume Control"
       "float,class:(steam) # Steam Popups"
@@ -32,7 +33,7 @@
       "float,class:(blueberry.py)"
       "float,class:(*iwgtk)"
       "float,title:(iwgtk)"
-      "float,title:(xdg-desktop-portal-gtk)"
+      "float,class:(xdg-desktop-portal-gtk)"
       # always render
       "renderunfocused,class:(vseeface.exe)"
       # immediate render

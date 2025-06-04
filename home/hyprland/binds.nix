@@ -31,6 +31,9 @@
         "$mainMod CTRL ALT, R, exec, killall waybar; waybar"
         "$mainMod CTRL ALT, R, exec, killall fcitx5; fcitx5"
 
+        # quick switch nixos
+        "$mainMod CTRL ALT, S, exec, uwsm app -- alacritty --class Alacritty-Popups -e bash -c 'nh os switch; echo \"命令执行完毕，按回车键退出。\"; read'"
+
         # clipboard
         "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
