@@ -15,7 +15,7 @@
     animation = "fromTop"
     command = "[term_classed] main-dropterm"
     class = "main-dropterm"
-    size = "80% 60%"
+    size = "80% 70%"
     max_size = "100% 100%"
   '';
 }

@@ -67,6 +67,9 @@
       key_press_enables_dpms = true;
       render_unfocused_fps = 60;
       disable_hyprland_logo = true;
+
+      enable_swallow = true;
+      swallow_regex = "^(kitty|Alacritty)$";
     };
   };
 }
