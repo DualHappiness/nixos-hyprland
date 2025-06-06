@@ -34,6 +34,7 @@
       "float,class:(*iwgtk)"
       "float,title:(iwgtk)"
       "float,class:(xdg-desktop-portal-gtk)"
+      "float,class:(wechat)"
       # always render
       "renderunfocused,class:(vseeface.exe)"
       # immediate render
