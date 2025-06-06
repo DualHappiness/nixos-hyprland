@@ -14,7 +14,7 @@
       kb_variant = "";
       kb_model = "";
       follow_mouse = 1;
-      follow_mouse_threshold = 100;
+      follow_mouse_threshold = 300;
 
       touchpad = {
         natural_scroll = true;
