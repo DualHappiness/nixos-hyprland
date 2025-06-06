@@ -4,17 +4,20 @@
     settings.show_startup_tips = false;
     settings.keybinds = {
       normal = {
-        "bind \"Ctrl Tab\"" = {
+        "bind \"Alt Tab\"" = {
           FocusNextPane = [ ];
         };
-        "bind \"Ctrl Shift Tab\"" = {
+        "bind \"Alt Shift Tab\"" = {
           FocusPreviousPane = [ ];
         };
-        "bind \"Alt Tab\"" = {
+        "bind \"Ctrl Tab\"" = {
           GoToNextTab = [ ];
         };
-        "bind \"Alt Shift Tab\"" = {
+        "bind \"Ctrl Shift Tab\"" = {
           GoToPreviousTab = [ ];
+        };
+        "bind \"Alt Enter\"" = {
+          ToggleFocusFullscreen = [ ];
         };
       };
     };
