@@ -25,5 +25,7 @@
     termscp
 
     pavucontrol
+
+    wpsoffice-cn
   ];
 }
