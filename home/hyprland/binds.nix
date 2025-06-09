@@ -6,12 +6,17 @@
 
       bind = [
         # shortcuts
-        ",xf86audiomute, exec, pactl -- set-sink-mute @DEFAULT_SINK@ toggle"
-        ",xf86audiolowervolume, exec, pactl -- set-sink-volume @DEFAULT_SINK@ -5%"
-        ",xf86audioraisevolume, exec, pactl -- set-sink-volume @DEFAULT_SINK@ +5%"
-        ",xf86audiomicmute, exec, pactl -- set-source-mute @DEFAULT_SOURCE@ toggle"
-        ",xf86monbrightnessdown, exec, brightnessctl set 10%-"
-        ",xf86monbrightnessup, exec, brightnessctl set 10%+"
+        ",xf86audiomute, exec, swayosd-client --output-volume mute-toggle"
+        ",xf86audiolowervolume, exec, swayosd-client --output-volume -5 --max-volume 100"
+        ",xf86audioraisevolume, exec, swayosd-client --output-volume +5 --max-volume 100"
+        ",xf86audiomicmute, exec, swayosd-client --input-volume mute-toggle"
+        ",xf86monbrightnessdown, exec, swayosd-client --brightness -10"
+        ",xf86monbrightnessup, exec, swayosd-client --brightness +10"
+
+        # FIXME: allways on
+        # locks
+        # ",Caps_Lock, exec, sleep 1sec; swayosd-client --caps-lock-led input0::capslock"
+        # ",Num_Lock, exec, sleep 1sec; swayosd-client --num-lock-led input0::numlock"
 
         # Hyprland hotkeys
         "$mainMod SHIFT, W, killactive"

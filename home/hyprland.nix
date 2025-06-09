@@ -12,6 +12,7 @@
     ./hyprland/rofi.nix
     ./hyprland/mako.nix
     ./hyprland/waybar.nix
+    ./hyprland/swayosd.nix
 
     ./hyprland/settings.nix
     ./hyprland/animations-end4.nix
