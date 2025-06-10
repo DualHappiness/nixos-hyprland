@@ -107,6 +107,8 @@
     nvd
     nix-search-cli
     nix-output-monitor
+
+    nautilus
   ];
 
   # v2raya
@@ -184,4 +186,9 @@
   programs.ssh.extraConfig = ''
     ForwardAgent yes
   '';
+
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "alacritty";
+  };
 }

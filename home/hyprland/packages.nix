@@ -12,7 +12,6 @@
 
     wl-clipboard
     # wl-clipboard-rs
-
     nautilus
   ];
 
