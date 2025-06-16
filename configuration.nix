@@ -109,6 +109,8 @@
     nix-output-monitor
 
     nautilus
+
+    docker-credential-helpers
   ];
 
   # v2raya
@@ -191,4 +193,6 @@
     enable = true;
     terminal = "alacritty";
   };
+
+  services.gnome.gnome-keyring.enable = true;
 }

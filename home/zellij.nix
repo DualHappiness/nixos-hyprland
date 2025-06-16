@@ -26,6 +26,9 @@
         "bind \"Alt x\"" = {
           CloseFocus = [ ];
         };
+        "bind \"Alt d\"" = {
+          Detach = [ ];
+        };
         "bind \"Ctrl y\"" = {
           "LaunchOrFocusPlugin \"file:~/.config/zellij/plugin/forgot.wasm\"" = {
             "floating" = true;

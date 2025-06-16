@@ -214,6 +214,7 @@ with lib;
           color: #${config.lib.stylix.colors.base00};
           background: #${config.lib.stylix.colors.base0F};
           transition: ${betterTransition};
+          opacity: 0.9;
         }
         #workspaces button:hover {
           font-weight: bold;

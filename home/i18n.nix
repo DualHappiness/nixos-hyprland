@@ -26,5 +26,7 @@
     # in .local/share/fcitx5/rime/default.custom.yaml
     patch:
       __include: rime_ice_suggestion:/
+      switcher/hotkeys:
+        - "F4"
   '';
 }

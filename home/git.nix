@@ -24,7 +24,7 @@
       options = {
         line-number = true;
         side-by-side = true;
-        features = "zebra-dark";
+        features = "zebra-light";
       };
     };
   };
