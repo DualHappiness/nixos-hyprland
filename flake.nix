@@ -59,7 +59,7 @@
       } // inputs;
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.panda-knight = nixpkgs.lib.nixosSystem {
         system = system;
         specialArgs = attrs;
         modules = [
