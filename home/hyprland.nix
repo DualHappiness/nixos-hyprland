@@ -31,6 +31,7 @@
 
   services.hyprpolkitagent.enable = true;
   services.cliphist.enable = true;
+  services.poweralertd.enable = true;
 
   programs.zen-browser = {
     enable = true;
