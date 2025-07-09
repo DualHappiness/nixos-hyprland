@@ -10,6 +10,7 @@
       code-cursor
       zed-editor
       vscode
+      warp-terminal
     ])
     ++ (with pkgs; [
       taplo
@@ -26,6 +27,8 @@
 
       nixfmt-rfc-style
       rustup
+
+      vscode-extensions.vadimcn.vscode-lldb
     ]);
 
   programs.helix = {

@@ -7,7 +7,7 @@
     userEmail = "dualwu_tech@outlook.com";
     extraConfig = {
       core = {
-        editor = "hx";
+        editor = "vim";
       };
       safe = {
         directory = "/etc/nixos";
