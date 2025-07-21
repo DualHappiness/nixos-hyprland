@@ -33,6 +33,7 @@
       inline_height = 10;
     };
   };
+  programs.television.enable = true;
 
   # nushell
   home.file.".config/nushell/nu_scripts".source = nu_scripts;
