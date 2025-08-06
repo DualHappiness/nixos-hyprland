@@ -30,6 +30,7 @@
   networking.extraHosts = ''
     123.60.141.172 pony-relay.zelostech.com.cn
   '';
+  networking.firewall.trustedInterfaces = [ "docker0" ];
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
