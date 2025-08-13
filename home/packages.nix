@@ -27,5 +27,6 @@
     pavucontrol
 
     wpsoffice-cn
+    chromium
   ];
 }
