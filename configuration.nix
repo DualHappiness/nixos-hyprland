@@ -51,19 +51,24 @@
   services.printing.enable = true;
 
   services.fprintd.enable = true;
-  services.thermald.enable = true;
 
+  # cpu setup
+  services.thermald.enable = true;
   services.tlp.enable = true;
   services.tlp.settings = {
-    CPU_DRIVER_OPMODE_ON_AC = "passive";
+    CPU_DRIVER_OPMODE_ON_AC = "active";
     CPU_DRIVER_OPMODE_ON_BAT = "passive";
 
-    CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
     CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
 
-    CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+    CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
     CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+    CPU_BOOST_ON_AC = 1;
+    CPU_HWP_DYN_BOOST_ON_AC = 1;
   };
+  # services.thinkfan.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -197,4 +202,45 @@
 
   services.gnome.gnome-keyring.enable = true;
   services.upower.enable = true;
+  services.thinkfan = {
+    enable = true;
+    sensors = [
+      {
+        type = "hwmon";
+        query = "/sys/class/hwmon";
+        name = "thinkpad";
+        indices = [
+          1
+          3
+          4
+          5
+          6
+          7
+        ];
+      }
+    ];
+    fans = [
+      {
+        type = "tpacpi";
+        query = "/proc/acpi/ibm/fan";
+      }
+    ];
+    levels = [
+      [
+        0
+        0
+        50
+      ]
+      [
+        "level auto"
+        45
+        75
+      ]
+      [
+        "level disengaged"
+        70
+        255
+      ]
+    ];
+  };
 }

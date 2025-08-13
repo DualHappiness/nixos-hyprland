@@ -8,7 +8,7 @@
   home.packages =
     (with pkgs-unstable; [
       code-cursor
-      zed-editor
+      zed-editor-fhs
       vscode
       warp-terminal
     ])

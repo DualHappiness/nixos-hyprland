@@ -78,4 +78,7 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+
+  # hardware.fancontrol.enable = true;
+  # hardware.hddfancontrol.enable = true;
 }
