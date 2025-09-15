@@ -27,6 +27,7 @@
 
       nixfmt-rfc-style
       rustup
+      protobuf
 
       vscode-extensions.vadimcn.vscode-lldb
     ]);

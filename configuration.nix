@@ -31,6 +31,10 @@
     123.60.141.172 pony-relay.zelostech.com.cn
   '';
   networking.firewall.trustedInterfaces = [ "docker0" ];
+  networking.firewall.allowedUDPPorts = [
+    10000
+    10001
+  ];
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";

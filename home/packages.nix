@@ -28,5 +28,9 @@
 
     wpsoffice-cn
     chromium
+    trash-cli
+
+    jujutsu
+    pre-commit
   ];
 }

@@ -15,6 +15,12 @@
       export EDITOR=hx
     '';
   };
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      vim = "hx";
+    };
+  };
   programs.tealdeer.enable = true;
 
   programs.zoxide = {
@@ -47,6 +53,7 @@
       cat = "bat";
       ze = "zellij";
       top = "btop";
+      rm = "trash-put";
     };
     environmentVariables = {
       EDITOR = "hx";
